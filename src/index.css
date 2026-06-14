@@ -1,0 +1,209 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Geist";
+  src: url("/fonts/Geist-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Design System — dual light/dark theme.
+   Brand: amber primary, slate neutrals. Switch themes by toggling the
+   `.dark` class on <html> (next-themes does this automatically). */
+
+@layer base {
+  :root {
+    /* Shared, theme-independent tokens */
+    --radius: 0.5rem;
+
+    /* Light theme */
+    --background: 210 40% 98%;
+    --foreground: 223 50% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 223 50% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 223 50% 10%;
+
+    --primary: 42 85% 50%;
+    --primary-50: 42 85% 95%;
+    --primary-100: 42 85% 90%;
+    --primary-200: 42 85% 80%;
+    --primary-300: 42 85% 70%;
+    --primary-400: 42 85% 60%;
+    --primary-500: 42 85% 50%;
+    --primary-600: 42 85% 40%;
+    --primary-700: 42 85% 30%;
+    --primary-800: 42 85% 20%;
+    --primary-900: 42 85% 10%;
+    --primary-950: 42 85% 7%;
+    --primary-foreground: 223 50% 10%;
+
+    --secondary: 210 40% 94%;
+    --secondary-foreground: 223 50% 10%;
+
+    --muted: 210 40% 94%;
+    --muted-foreground: 215 16% 40%;
+
+    --accent: 42 85% 50%;
+    --accent-foreground: 223 50% 10%;
+
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 71% 40%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 223 50% 10%;
+
+    --border: 214 32% 88%;
+    --input: 214 32% 88%;
+    --ring: 199 89% 48%;
+
+    --glass-bg: 0 0% 0% / 0.03;
+    --glass-border: 0 0% 0% / 0.08;
+    --glass-hover: 0 0% 0% / 0.05;
+    --glass-divider: 0 0% 0% / 0.06;
+    --glow-opacity: 0.08;
+
+    --sidebar-background: 210 40% 98%;
+    --sidebar-foreground: 215 16% 40%;
+    --sidebar-primary: 199 89% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 40% 94%;
+    --sidebar-accent-foreground: 223 50% 10%;
+    --sidebar-border: 214 32% 88%;
+    --sidebar-ring: 199 89% 48%;
+
+    --chart-positive: 142 71% 40%;
+    --chart-negative: 0 72% 50%;
+    --chart-line: 199 89% 48%;
+    --chart-grid: 214 32% 88%;
+  }
+
+  .dark {
+    /* Dark theme — original Slate Dark palette */
+    --background: 223 50% 7%;
+    --foreground: 210 40% 98%;
+
+    --card: 220 45% 12%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 223 50% 7%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 42 85% 50%;
+    --primary-50: 42 85% 95%;
+    --primary-100: 42 85% 90%;
+    --primary-200: 42 85% 80%;
+    --primary-300: 42 85% 70%;
+    --primary-400: 42 85% 60%;
+    --primary-500: 42 85% 50%;
+    --primary-600: 42 85% 40%;
+    --primary-700: 42 85% 30%;
+    --primary-800: 42 85% 20%;
+    --primary-900: 42 85% 10%;
+    --primary-950: 42 85% 7%;
+    --primary-foreground: 223 50% 7%;
+
+    --secondary: 220 45% 12%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 220 45% 12%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 42 85% 60%;
+    --accent-foreground: 223 50% 7%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 210 40% 98%;
+
+    --success: 142 71% 45%;
+    --success-foreground: 223 50% 7%;
+
+    --warning: 38 80% 50%;
+    --warning-foreground: 223 50% 7%;
+
+    --border: 220 35% 20%;
+    --input: 220 35% 20%;
+    --ring: 199 89% 48%;
+
+    --glass-bg: 0 0% 100% / 0.07;
+    --glass-border: 0 0% 100% / 0.1;
+    --glass-hover: 0 0% 100% / 0.07;
+    --glass-divider: 0 0% 100% / 0.05;
+    --glow-opacity: 0.1;
+
+    --sidebar-background: 223 50% 7%;
+    --sidebar-foreground: 215 20% 65%;
+    --sidebar-primary: 199 89% 48%;
+    --sidebar-primary-foreground: 223 50% 7%;
+    --sidebar-accent: 220 45% 12%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 220 35% 20%;
+    --sidebar-ring: 199 89% 48%;
+
+    --chart-positive: 142 71% 45%;
+    --chart-negative: 0 62% 50%;
+    --chart-line: 199 89% 48%;
+    --chart-grid: 220 35% 17%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    min-height: 100%;
+  }
+
+  h1 {
+    @apply text-3xl font-bold tracking-tight;
+  }
+
+  /* Hide number input spinners in Chrome, Safari, Edge, Opera */
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Hide number input spinners in Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply rounded-xl border border-glass-border bg-glass-bg backdrop-blur-md;
+  }
+
+  .radial-glow {
+    background: radial-gradient(
+      ellipse 60% 40% at 50% 0%,
+      hsl(42.1 100% 50% / var(--glow-opacity)) 0%,
+      transparent 70%
+    );
+  }
+
+  .topbar-blur {
+    @apply border-b border-glass-border bg-background/85 backdrop-blur-lg;
+  }
+
+  .font-mono-tabular {
+    font-variant-numeric: tabular-nums;
+    font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+      "Liberation Mono", monospace;
+  }
+}
