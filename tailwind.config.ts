@@ -1,6 +1,11 @@
 import type { Config } from "tailwindcss";
-import defaultTheme from "tailwindcss/defaultTheme";
 
+/**
+ * Useful UI — Tailwind theme.
+ *
+ * Every value here reads a CSS variable defined in src/index.css. Nothing is
+ * hardcoded, so a re-theme is a token swap and never a config edit.
+ */
 export default {
   darkMode: ["class"],
   content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
@@ -15,7 +20,32 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Geist", ...defaultTheme.fontFamily.sans],
+        sans: ["var(--font-sans)"],
+        mono: ["var(--font-mono)"],
+      },
+      fontSize: {
+        // UI text uses ABSOLUTE line heights that land on the 4px grid. A ratio
+        // does not: 14px x 1.5 = 21px, which overflowed the 20px (min-h-5)
+        // space every field reserves for its error message and shifted the
+        // whole form down by exactly 1px the moment validation fired.
+        // The --lh-* ratio tokens still drive prose in index.css.
+        xs: ["var(--fs-xs)", { lineHeight: "1rem" }],
+        sm: ["var(--fs-sm)", { lineHeight: "1.25rem" }],
+        base: ["var(--fs-base)", { lineHeight: "1.5rem" }],
+        lg: ["var(--fs-lg)", { lineHeight: "1.75rem" }],
+        xl: ["var(--fs-xl)", { lineHeight: "1.75rem" }],
+        "2xl": ["var(--fs-2xl)", { lineHeight: "2rem" }],
+        "3xl": ["var(--fs-3xl)", { lineHeight: "var(--lh-tight)" }],
+        "4xl": ["var(--fs-4xl)", { lineHeight: "var(--lh-tight)" }],
+        "5xl": ["var(--fs-5xl)", { lineHeight: "var(--lh-tight)" }],
+        "6xl": ["var(--fs-6xl)", { lineHeight: "var(--lh-tight)" }],
+      },
+      letterSpacing: {
+        tighter: "var(--tracking-tighter)",
+        tight: "var(--tracking-tight)",
+        normal: "var(--tracking-normal)",
+        wide: "var(--tracking-wide)",
+        wider: "var(--tracking-wider)",
       },
       colors: {
         border: "hsl(var(--border))",
@@ -23,6 +53,19 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        gray: {
+          50: "hsl(var(--gray-50))",
+          100: "hsl(var(--gray-100))",
+          200: "hsl(var(--gray-200))",
+          300: "hsl(var(--gray-300))",
+          400: "hsl(var(--gray-400))",
+          500: "hsl(var(--gray-500))",
+          600: "hsl(var(--gray-600))",
+          700: "hsl(var(--gray-700))",
+          800: "hsl(var(--gray-800))",
+          900: "hsl(var(--gray-900))",
+          950: "hsl(var(--gray-950))",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -86,21 +129,29 @@ export default {
           line: "hsl(var(--chart-line))",
           grid: "hsl(var(--chart-grid))",
         },
-        glass: {
-          bg: "hsl(var(--glass-bg))",
-          border: "hsl(var(--glass-border))",
-          hover: "hsl(var(--glass-hover))",
-          divider: "hsl(var(--glass-divider))",
-        },
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        sm: "var(--radius-sm)",
+        md: "var(--radius-md)",
+        lg: "var(--radius-lg)",
+        xl: "var(--radius-xl)",
+        "2xl": "var(--radius-2xl)",
       },
       boxShadow: {
-        surface: "inset 0 1px 0 0 rgb(255 255 255 / 0.08), 0 2px 12px 0 rgb(0 0 0 / 0.40)",
-        "surface-hover": "inset 0 1px 0 0 rgb(255 255 255 / 0.10), 0 6px 20px 0 rgb(0 0 0 / 0.50)",
+        sm: "var(--shadow-sm)",
+        card: "var(--shadow-card)",
+        pop: "var(--shadow-pop)",
+        focus: "var(--shadow-focus)",
+        glow: "var(--glow-primary)",
+      },
+      transitionTimingFunction: {
+        out: "var(--ease-out)",
+        "in-out": "var(--ease-in-out)",
+      },
+      transitionDuration: {
+        fast: "var(--dur-fast)",
+        base: "var(--dur-base)",
+        slow: "var(--dur-slow)",
       },
       keyframes: {
         "accordion-down": {
@@ -117,9 +168,9 @@ export default {
         },
       },
       animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-        "fade-in-up": "fade-in-up 0.35s ease-out",
+        "accordion-down": "accordion-down var(--dur-base) var(--ease-out)",
+        "accordion-up": "accordion-up var(--dur-base) var(--ease-out)",
+        "fade-in-up": "fade-in-up var(--dur-slow) var(--ease-out)",
       },
     },
   },

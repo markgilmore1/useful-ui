@@ -1,16 +1,18 @@
 {
   "$schema": "https://ui.shadcn.com/schema/registry.json",
   "name": "useful-ui",
-  "homepage": "https://useful-ui.example.com",
+  "homepage": "https://useful-ui.vercel.app",
   "items": [
     {
       "name": "foundation",
       "type": "registry:style",
-      "description": "Design tokens (light + dark), Tailwind theme extensions, and core utilities. Add this first.",
+      "description": "Design tokens (light + dark), Tailwind theme extensions, fonts and core utilities. Add this first.",
       "dependencies": [
         "clsx",
         "tailwind-merge",
-        "tailwindcss-animate"
+        "tailwindcss-animate",
+        "@fontsource-variable/inter",
+        "@fontsource-variable/geist-mono"
       ],
       "files": [
         {
@@ -24,138 +26,313 @@
       ],
       "cssVars": {
         "theme": {
-          "--radius": "0.5rem"
+          "--radius": "0.5rem",
+          "--radius-sm": "0.25rem",
+          "--radius-md": "0.375rem",
+          "--radius-lg": "0.5rem",
+          "--radius-xl": "0.75rem",
+          "--radius-2xl": "1rem",
+          "--radius-full": "9999px",
+          "--glow-hero": "radial-gradient( ellipse 60% 40% at 50% 0%, hsl(var(--primary) / 0.08) 0%, transparent 70% )",
+          "--space-0": "0",
+          "--space-1": "0.25rem",
+          "--space-2": "0.5rem",
+          "--space-3": "0.75rem",
+          "--space-4": "1rem",
+          "--space-5": "1.25rem",
+          "--space-6": "1.5rem",
+          "--space-8": "2rem",
+          "--space-10": "2.5rem",
+          "--space-12": "3rem",
+          "--space-16": "4rem",
+          "--space-20": "5rem",
+          "--font-sans": "'Inter Variable', 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif",
+          "--font-mono": "'Geist Mono Variable', 'Geist Mono', ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace",
+          "--fs-xs": "0.75rem",
+          "--fs-sm": "0.875rem",
+          "--fs-base": "1rem",
+          "--fs-lg": "1.125rem",
+          "--fs-xl": "1.25rem",
+          "--fs-2xl": "1.5rem",
+          "--fs-3xl": "1.875rem",
+          "--fs-4xl": "2.25rem",
+          "--fs-5xl": "3rem",
+          "--fs-6xl": "3.75rem",
+          "--lh-tight": "1.1",
+          "--lh-snug": "1.25",
+          "--lh-normal": "1.5",
+          "--lh-relaxed": "1.65",
+          "--tracking-tighter": "-0.04em",
+          "--tracking-tight": "-0.02em",
+          "--tracking-normal": "0",
+          "--tracking-wide": "0.02em",
+          "--tracking-wider": "0.06em",
+          "--fw-regular": "400",
+          "--fw-medium": "500",
+          "--fw-semibold": "600",
+          "--fw-bold": "700",
+          "--fw-extrabold": "800",
+          "--ease-out": "cubic-bezier(0.16, 1, 0.3, 1)",
+          "--ease-in-out": "cubic-bezier(0.4, 0, 0.2, 1)",
+          "--dur-fast": "120ms",
+          "--dur-base": "180ms",
+          "--dur-slow": "260ms"
         },
         "light": {
-          "background": "210 40% 98%",
-          "foreground": "223 50% 10%",
+          "background": "0 0% 100%",
+          "foreground": "0 0% 9%",
           "card": "0 0% 100%",
-          "card-foreground": "223 50% 10%",
+          "card-foreground": "0 0% 9%",
           "popover": "0 0% 100%",
-          "popover-foreground": "223 50% 10%",
-          "primary": "42 85% 50%",
-          "primary-50": "42 85% 95%",
-          "primary-100": "42 85% 90%",
-          "primary-200": "42 85% 80%",
-          "primary-300": "42 85% 70%",
-          "primary-400": "42 85% 60%",
-          "primary-500": "42 85% 50%",
-          "primary-600": "42 85% 40%",
-          "primary-700": "42 85% 30%",
-          "primary-800": "42 85% 20%",
-          "primary-900": "42 85% 10%",
-          "primary-950": "42 85% 7%",
-          "primary-foreground": "223 50% 10%",
-          "secondary": "210 40% 94%",
-          "secondary-foreground": "223 50% 10%",
-          "muted": "210 40% 94%",
-          "muted-foreground": "215 16% 40%",
-          "accent": "42 85% 50%",
-          "accent-foreground": "223 50% 10%",
-          "destructive": "0 72% 50%",
+          "popover-foreground": "0 0% 9%",
+          "muted": "0 0% 96%",
+          "muted-foreground": "0 0% 43%",
+          "border": "0 0% 89%",
+          "input": "0 0% 89%",
+          "gray-50": "0 0% 98%",
+          "gray-100": "0 0% 96%",
+          "gray-200": "0 0% 90%",
+          "gray-300": "0 0% 83%",
+          "gray-400": "0 0% 64%",
+          "gray-500": "0 0% 45%",
+          "gray-600": "0 0% 32%",
+          "gray-700": "0 0% 25%",
+          "gray-800": "0 0% 15%",
+          "gray-900": "0 0% 9%",
+          "gray-950": "0 0% 4%",
+          "primary": "221 83% 53%",
+          "primary-foreground": "0 0% 100%",
+          "primary-50": "213 100% 96.9%",
+          "primary-100": "214 95% 93.1%",
+          "primary-200": "213 97% 87.1%",
+          "primary-300": "212 96% 78%",
+          "primary-400": "213 94% 68%",
+          "primary-500": "217 91% 60%",
+          "primary-600": "221 83% 53.3%",
+          "primary-700": "224 76% 48%",
+          "primary-800": "226 71% 40%",
+          "primary-900": "224 64% 33%",
+          "primary-950": "226 55% 21%",
+          "secondary": "0 0% 96%",
+          "secondary-foreground": "0 0% 9%",
+          "accent": "221 83% 53%",
+          "accent-foreground": "0 0% 100%",
+          "ring": "221 83% 53%",
+          "destructive": "348 83% 40%",
           "destructive-foreground": "0 0% 100%",
-          "success": "142 71% 40%",
+          "success": "142 52% 34%",
           "success-foreground": "0 0% 100%",
-          "warning": "38 92% 50%",
-          "warning-foreground": "223 50% 10%",
-          "border": "214 32% 88%",
-          "input": "214 32% 88%",
-          "ring": "199 89% 48%",
-          "glass-bg": "0 0% 0% / 0.03",
-          "glass-border": "0 0% 0% / 0.08",
-          "glass-hover": "0 0% 0% / 0.05",
-          "glass-divider": "0 0% 0% / 0.06",
-          "glow-opacity": "0.08",
-          "sidebar-background": "210 40% 98%",
-          "sidebar-foreground": "215 16% 40%",
-          "sidebar-primary": "199 89% 48%",
+          "warning": "24 94% 39%",
+          "warning-foreground": "0 0% 100%",
+          "chart-positive": "142 52% 34%",
+          "chart-negative": "348 83% 40%",
+          "chart-line": "221 83% 53%",
+          "chart-grid": "0 0% 89%",
+          "sidebar-background": "0 0% 100%",
+          "sidebar-foreground": "0 0% 43%",
+          "sidebar-primary": "221 83% 53%",
           "sidebar-primary-foreground": "0 0% 100%",
-          "sidebar-accent": "210 40% 94%",
-          "sidebar-accent-foreground": "223 50% 10%",
-          "sidebar-border": "214 32% 88%",
-          "sidebar-ring": "199 89% 48%",
-          "chart-positive": "142 71% 40%",
-          "chart-negative": "0 72% 50%",
-          "chart-line": "199 89% 48%",
-          "chart-grid": "214 32% 88%"
+          "sidebar-accent": "0 0% 96%",
+          "sidebar-accent-foreground": "0 0% 9%",
+          "sidebar-border": "0 0% 89%",
+          "sidebar-ring": "221 83% 53%",
+          "fg-1": "hsl(var(--foreground))",
+          "fg-2": "hsl(var(--muted-foreground))",
+          "fg-3": "hsl(var(--muted-foreground) / 0.7)",
+          "fg-accent": "hsl(var(--primary-600))",
+          "bg-app": "hsl(var(--background))",
+          "bg-card": "hsl(var(--card))",
+          "bg-glass": "rgba(0, 0, 0, 0.03)",
+          "bg-hover": "rgba(0, 0, 0, 0.04)",
+          "border-default": "hsl(var(--border))",
+          "border-glass": "rgba(0, 0, 0, 0.08)",
+          "border-hairline": "rgba(0, 0, 0, 0.06)",
+          "skeleton-base": "0 0% 90%",
+          "skeleton-highlight": "0 0% 100%",
+          "num-pos": "hsl(142 52% 34%)",
+          "num-neg": "hsl(348 83% 40%)",
+          "num-neutral": "hsl(var(--foreground))",
+          "shadow-sm": "0 1px 2px 0 rgba(0, 0, 0, 0.06)",
+          "shadow-card": "0 1px 2px 0 rgba(0, 0, 0, 0.06)",
+          "shadow-pop": "0 10px 30px -12px rgba(0, 0, 0, 0.2), 0 4px 10px -4px rgba(0, 0, 0, 0.12)",
+          "shadow-focus": "0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--ring) / 0.5)",
+          "glow-primary": "0 0 24px -4px hsl(var(--primary) / 0.35)"
         },
         "dark": {
-          "background": "223 50% 7%",
-          "foreground": "210 40% 98%",
-          "card": "220 45% 12%",
-          "card-foreground": "210 40% 98%",
-          "popover": "223 50% 7%",
-          "popover-foreground": "210 40% 98%",
-          "primary": "42 85% 50%",
-          "primary-50": "42 85% 95%",
-          "primary-100": "42 85% 90%",
-          "primary-200": "42 85% 80%",
-          "primary-300": "42 85% 70%",
-          "primary-400": "42 85% 60%",
-          "primary-500": "42 85% 50%",
-          "primary-600": "42 85% 40%",
-          "primary-700": "42 85% 30%",
-          "primary-800": "42 85% 20%",
-          "primary-900": "42 85% 10%",
-          "primary-950": "42 85% 7%",
-          "primary-foreground": "223 50% 7%",
-          "secondary": "220 45% 12%",
-          "secondary-foreground": "210 40% 98%",
-          "muted": "220 45% 12%",
-          "muted-foreground": "215 20% 65%",
-          "accent": "42 85% 60%",
-          "accent-foreground": "223 50% 7%",
-          "destructive": "0 62% 50%",
-          "destructive-foreground": "210 40% 98%",
-          "success": "142 71% 45%",
-          "success-foreground": "223 50% 7%",
-          "warning": "38 80% 50%",
-          "warning-foreground": "223 50% 7%",
-          "border": "220 35% 20%",
-          "input": "220 35% 20%",
-          "ring": "199 89% 48%",
-          "glass-bg": "0 0% 100% / 0.07",
-          "glass-border": "0 0% 100% / 0.1",
-          "glass-hover": "0 0% 100% / 0.07",
-          "glass-divider": "0 0% 100% / 0.05",
-          "glow-opacity": "0.1",
-          "sidebar-background": "223 50% 7%",
-          "sidebar-foreground": "215 20% 65%",
-          "sidebar-primary": "199 89% 48%",
-          "sidebar-primary-foreground": "223 50% 7%",
-          "sidebar-accent": "220 45% 12%",
-          "sidebar-accent-foreground": "210 40% 98%",
-          "sidebar-border": "220 35% 20%",
-          "sidebar-ring": "199 89% 48%",
-          "chart-positive": "142 71% 45%",
-          "chart-negative": "0 62% 50%",
-          "chart-line": "199 89% 48%",
-          "chart-grid": "220 35% 17%"
+          "background": "0 0% 7%",
+          "foreground": "0 0% 98%",
+          "card": "0 0% 11%",
+          "card-foreground": "0 0% 98%",
+          "popover": "0 0% 11%",
+          "popover-foreground": "0 0% 98%",
+          "muted": "0 0% 15%",
+          "muted-foreground": "0 0% 64%",
+          "border": "0 0% 20%",
+          "input": "0 0% 20%",
+          "primary-foreground": "0 0% 100%",
+          "secondary": "0 0% 15%",
+          "secondary-foreground": "0 0% 98%",
+          "accent-foreground": "0 0% 100%",
+          "destructive-foreground": "0 0% 98%",
+          "success": "142 45% 52%",
+          "success-foreground": "0 0% 7%",
+          "warning": "24 90% 58%",
+          "warning-foreground": "0 0% 7%",
+          "chart-positive": "142 45% 52%",
+          "chart-grid": "0 0% 20%",
+          "sidebar-background": "0 0% 9%",
+          "sidebar-foreground": "0 0% 64%",
+          "sidebar-primary-foreground": "0 0% 100%",
+          "sidebar-accent": "0 0% 15%",
+          "sidebar-accent-foreground": "0 0% 98%",
+          "sidebar-border": "0 0% 20%",
+          "fg-accent": "hsl(var(--primary-400))",
+          "bg-glass": "rgba(255, 255, 255, 0.05)",
+          "bg-hover": "rgba(255, 255, 255, 0.05)",
+          "border-glass": "rgba(255, 255, 255, 0.1)",
+          "border-hairline": "rgba(255, 255, 255, 0.06)",
+          "skeleton-base": "0 0% 16%",
+          "skeleton-highlight": "0 0% 30%",
+          "num-pos": "hsl(142 45% 52%)",
+          "num-neg": "hsl(348 83% 62%)",
+          "shadow-sm": "0 1px 2px 0 rgba(0, 0, 0, 0.35)",
+          "shadow-card": "0 1px 2px 0 rgba(0, 0, 0, 0.35)",
+          "shadow-pop": "0 10px 30px -12px rgba(0, 0, 0, 0.55), 0 4px 10px -4px rgba(0, 0, 0, 0.4)",
+          "gray-50": "0 0% 98%",
+          "gray-100": "0 0% 96%",
+          "gray-200": "0 0% 90%",
+          "gray-300": "0 0% 83%",
+          "gray-400": "0 0% 64%",
+          "gray-500": "0 0% 45%",
+          "gray-600": "0 0% 32%",
+          "gray-700": "0 0% 25%",
+          "gray-800": "0 0% 15%",
+          "gray-900": "0 0% 9%",
+          "gray-950": "0 0% 4%",
+          "primary": "221 83% 53%",
+          "primary-50": "213 100% 96.9%",
+          "primary-100": "214 95% 93.1%",
+          "primary-200": "213 97% 87.1%",
+          "primary-300": "212 96% 78%",
+          "primary-400": "213 94% 68%",
+          "primary-500": "217 91% 60%",
+          "primary-600": "221 83% 53.3%",
+          "primary-700": "224 76% 48%",
+          "primary-800": "226 71% 40%",
+          "primary-900": "224 64% 33%",
+          "primary-950": "226 55% 21%",
+          "accent": "221 83% 53%",
+          "ring": "221 83% 53%",
+          "destructive": "348 83% 40%",
+          "chart-negative": "348 83% 40%",
+          "chart-line": "221 83% 53%",
+          "sidebar-primary": "221 83% 53%",
+          "sidebar-ring": "221 83% 53%",
+          "fg-1": "hsl(var(--foreground))",
+          "fg-2": "hsl(var(--muted-foreground))",
+          "fg-3": "hsl(var(--muted-foreground) / 0.7)",
+          "bg-app": "hsl(var(--background))",
+          "bg-card": "hsl(var(--card))",
+          "border-default": "hsl(var(--border))",
+          "num-neutral": "hsl(var(--foreground))",
+          "shadow-focus": "0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--ring) / 0.5)",
+          "glow-primary": "0 0 24px -4px hsl(var(--primary) / 0.35)"
         }
       },
       "tailwind": {
         "config": {
-          "darkMode": [
-            "class"
-          ],
           "theme": {
             "extend": {
               "fontFamily": {
                 "sans": [
-                  "Geist",
-                  "ui-sans-serif",
-                  "system-ui",
-                  "sans-serif"
+                  "var(--font-sans)"
+                ],
+                "mono": [
+                  "var(--font-mono)"
                 ]
               },
+              "fontSize": {
+                "xs": [
+                  "var(--fs-xs)",
+                  {
+                    "lineHeight": "var(--lh-normal)"
+                  }
+                ],
+                "sm": [
+                  "var(--fs-sm)",
+                  {
+                    "lineHeight": "var(--lh-normal)"
+                  }
+                ],
+                "base": [
+                  "var(--fs-base)",
+                  {
+                    "lineHeight": "var(--lh-normal)"
+                  }
+                ],
+                "lg": [
+                  "var(--fs-lg)",
+                  {
+                    "lineHeight": "var(--lh-snug)"
+                  }
+                ],
+                "xl": [
+                  "var(--fs-xl)",
+                  {
+                    "lineHeight": "var(--lh-snug)"
+                  }
+                ],
+                "2xl": [
+                  "var(--fs-2xl)",
+                  {
+                    "lineHeight": "var(--lh-snug)"
+                  }
+                ],
+                "3xl": [
+                  "var(--fs-3xl)",
+                  {
+                    "lineHeight": "var(--lh-tight)"
+                  }
+                ],
+                "4xl": [
+                  "var(--fs-4xl)",
+                  {
+                    "lineHeight": "var(--lh-tight)"
+                  }
+                ],
+                "5xl": [
+                  "var(--fs-5xl)",
+                  {
+                    "lineHeight": "var(--lh-tight)"
+                  }
+                ],
+                "6xl": [
+                  "var(--fs-6xl)",
+                  {
+                    "lineHeight": "var(--lh-tight)"
+                  }
+                ]
+              },
+              "letterSpacing": {
+                "tighter": "var(--tracking-tighter)",
+                "tight": "var(--tracking-tight)",
+                "normal": "var(--tracking-normal)",
+                "wide": "var(--tracking-wide)",
+                "wider": "var(--tracking-wider)"
+              },
               "colors": {
-                "success": {
-                  "DEFAULT": "hsl(var(--success))",
-                  "foreground": "hsl(var(--success-foreground))"
-                },
-                "warning": {
-                  "DEFAULT": "hsl(var(--warning))",
-                  "foreground": "hsl(var(--warning-foreground))"
+                "gray": {
+                  "50": "hsl(var(--gray-50))",
+                  "100": "hsl(var(--gray-100))",
+                  "200": "hsl(var(--gray-200))",
+                  "300": "hsl(var(--gray-300))",
+                  "400": "hsl(var(--gray-400))",
+                  "500": "hsl(var(--gray-500))",
+                  "600": "hsl(var(--gray-600))",
+                  "700": "hsl(var(--gray-700))",
+                  "800": "hsl(var(--gray-800))",
+                  "900": "hsl(var(--gray-900))",
+                  "950": "hsl(var(--gray-950))"
                 },
                 "primary": {
                   "DEFAULT": "hsl(var(--primary))",
@@ -172,6 +349,14 @@
                   "900": "hsl(var(--primary-900))",
                   "950": "hsl(var(--primary-950))"
                 },
+                "success": {
+                  "DEFAULT": "hsl(var(--success))",
+                  "foreground": "hsl(var(--success-foreground))"
+                },
+                "warning": {
+                  "DEFAULT": "hsl(var(--warning))",
+                  "foreground": "hsl(var(--warning-foreground))"
+                },
                 "sidebar": {
                   "DEFAULT": "hsl(var(--sidebar-background))",
                   "foreground": "hsl(var(--sidebar-foreground))",
@@ -187,17 +372,30 @@
                   "negative": "hsl(var(--chart-negative))",
                   "line": "hsl(var(--chart-line))",
                   "grid": "hsl(var(--chart-grid))"
-                },
-                "glass": {
-                  "bg": "hsl(var(--glass-bg))",
-                  "border": "hsl(var(--glass-border))",
-                  "hover": "hsl(var(--glass-hover))",
-                  "divider": "hsl(var(--glass-divider))"
                 }
               },
+              "borderRadius": {
+                "sm": "var(--radius-sm)",
+                "md": "var(--radius-md)",
+                "lg": "var(--radius-lg)",
+                "xl": "var(--radius-xl)",
+                "2xl": "var(--radius-2xl)"
+              },
               "boxShadow": {
-                "surface": "inset 0 1px 0 0 rgb(255 255 255 / 0.08), 0 2px 12px 0 rgb(0 0 0 / 0.40)",
-                "surface-hover": "inset 0 1px 0 0 rgb(255 255 255 / 0.10), 0 6px 20px 0 rgb(0 0 0 / 0.50)"
+                "sm": "var(--shadow-sm)",
+                "card": "var(--shadow-card)",
+                "pop": "var(--shadow-pop)",
+                "focus": "var(--shadow-focus)",
+                "glow": "var(--glow-primary)"
+              },
+              "transitionTimingFunction": {
+                "out": "var(--ease-out)",
+                "in-out": "var(--ease-in-out)"
+              },
+              "transitionDuration": {
+                "fast": "var(--dur-fast)",
+                "base": "var(--dur-base)",
+                "slow": "var(--dur-slow)"
               },
               "keyframes": {
                 "fade-in-up": {
@@ -212,7 +410,7 @@
                 }
               },
               "animation": {
-                "fade-in-up": "fade-in-up 0.35s ease-out"
+                "fade-in-up": "fade-in-up var(--dur-slow) var(--ease-out)"
               }
             }
           }
