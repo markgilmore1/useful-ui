@@ -25,3 +25,6 @@ dist-ssr
 
 # Generated registry output (run npm run registry:build)
 public/r
+
+# Generated Claude Design cards (run npm run cards:export)
+design-cards

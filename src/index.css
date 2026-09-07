@@ -237,7 +237,20 @@
     --sidebar-accent-foreground: 0 0% 98%;
     --sidebar-border:      0 0% 20%;
 
+    /* The aliases must be redefined here, not just inherited. A custom property
+       whose value is `hsl(var(--foreground))` substitutes where it is DECLARED,
+       so one declared on :root freezes at the light value and never flips for a
+       .dark applied to a descendant — headings went near-black on near-black
+       the first time a card rendered a dark pane inside a light page. */
+    --fg-1: hsl(var(--foreground));
+    --fg-2: hsl(var(--muted-foreground));
+    --fg-3: hsl(var(--muted-foreground) / 0.7);
     --fg-accent: hsl(var(--primary-400));
+
+    --bg-app:   hsl(var(--background));
+    --bg-card:  hsl(var(--card));
+    --border-default: hsl(var(--border));
+    --num-neutral: hsl(var(--foreground));
 
     --bg-glass: rgba(255, 255, 255, 0.05);
     --bg-hover: rgba(255, 255, 255, 0.05);
