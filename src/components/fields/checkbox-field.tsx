@@ -42,20 +42,30 @@ export function CheckboxField<
       control={control}
       name={name}
       render={({ field }) => (
-        <FormItem className={cn('flex flex-row items-start gap-3 space-y-0', className)}>
-          <FormControl>
-            <Checkbox
-              checked={Boolean(field.value)}
-              onCheckedChange={field.onChange}
-              disabled={disabled}
-            />
-          </FormControl>
-          <div className="space-y-0.5 leading-none">
-            {label ? <FieldLabel variant={labelVariant}>{label}</FieldLabel> : null}
-            {description ? <FormDescription>{description}</FormDescription> : null}
-            <div className="min-h-5">
-              <FormMessage />
+        <FormItem className={cn('space-y-0', className)}>
+          <div className="flex flex-row items-start gap-3">
+            {/* h-5 is one label line; centring the 16px box inside it aligns the
+                two deterministically, where a fixed margin drifts as soon as the
+                type scale moves. */}
+            <div className="flex h-5 shrink-0 items-center">
+              <FormControl>
+                <Checkbox
+                  checked={Boolean(field.value)}
+                  onCheckedChange={field.onChange}
+                  disabled={disabled}
+                />
+              </FormControl>
             </div>
+            {/* leading-5 matches the label's own 14px/20px line box. Without it the
+                div inherits the body's 24px strut and the label sits 2px lower than
+                any control aligned to a 20px line. */}
+            <div className="space-y-0.5 leading-5">
+              {label ? <FieldLabel variant={labelVariant}>{label}</FieldLabel> : null}
+              {description ? <FormDescription>{description}</FormDescription> : null}
+            </div>
+          </div>
+          <div className="min-h-5">
+            <FormMessage />
           </div>
         </FormItem>
       )}

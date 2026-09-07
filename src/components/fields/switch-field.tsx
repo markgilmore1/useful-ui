@@ -42,21 +42,31 @@ export function SwitchField<
       control={control}
       name={name}
       render={({ field }) => (
-        <FormItem className={cn('flex flex-row items-center justify-between gap-4 space-y-0', className)}>
-          <div className="space-y-0.5">
-            {label ? <FieldLabel variant={labelVariant}>{label}</FieldLabel> : null}
-            {description ? <FormDescription>{description}</FormDescription> : null}
-            <div className="min-h-5">
-              <FormMessage />
+        // The reserved message row sits BELOW the switch row rather than inside
+        // it. While it was a sibling of the label, items-center centred the
+        // switch against label + message and it read as sitting too low.
+        <FormItem className={cn('space-y-0', className)}>
+          <div className="flex flex-row items-start justify-between gap-4">
+            {/* leading-5 matches the label's own 14px/20px line box. Without it the
+                div inherits the body's 24px strut and the label sits 2px lower than
+                any control aligned to a 20px line. */}
+            <div className="space-y-0.5 leading-5">
+              {label ? <FieldLabel variant={labelVariant}>{label}</FieldLabel> : null}
+              {description ? <FormDescription>{description}</FormDescription> : null}
+            </div>
+            <div className="flex h-5 shrink-0 items-center">
+              <FormControl>
+                <Switch
+                  checked={Boolean(field.value)}
+                  onCheckedChange={field.onChange}
+                  disabled={disabled}
+                />
+              </FormControl>
             </div>
           </div>
-          <FormControl>
-            <Switch
-              checked={Boolean(field.value)}
-              onCheckedChange={field.onChange}
-              disabled={disabled}
-            />
-          </FormControl>
+          <div className="min-h-5">
+            <FormMessage />
+          </div>
         </FormItem>
       )}
     />

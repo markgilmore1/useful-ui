@@ -55,7 +55,7 @@ export function DisplayField({
       ) : null}
       <div className="w-full">
         {isPrimitive ? (
-          <InputDisplay value={value as string | number | null | undefined} placeholder={placeholder} className="px-0" />
+          <InputDisplay value={value as string | number | null | undefined} placeholder={placeholder} />
         ) : (
           <div className="flex h-10 items-center py-2 text-sm">{value}</div>
         )}
